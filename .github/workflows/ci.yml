@@ -1,0 +1,27 @@
+name: Django Vuln check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install python and dependencies
+      uses: astral-sh/setup-uv@v1
+      with:
+        python-version: '3.13'
+
+    - name: Install dependencies
+      shell: bash
+      run: uv sync
+
+    - name: Run Tests
+      run: uv run pytest
