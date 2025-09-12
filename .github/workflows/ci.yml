@@ -25,3 +25,9 @@ jobs:
 
     - name: Run Tests
       run: uv run pytest
+
+    - name: Install Vulnerability Scanner
+      run: uv pip install vulnerability-scanner
+
+    - name: Run Vulnerability Scanner
+      run: uv run vuln-scan --scanners all --fail-on-severity critical --path api
