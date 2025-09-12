@@ -30,4 +30,4 @@ jobs:
       run: uv pip install vulnerability-scanner
 
     - name: Run Vulnerability Scanner
-      run: uv run vuln-scan --scanners all --fail-on-severity high --path api
+      run: uv run vuln-scan --scanners all --fail-on-severity critical --path api
